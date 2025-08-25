@@ -274,10 +274,24 @@ Send a new message
 - `updateLocation`: Update user location and settings
 - `newMessage`: Receive new messages in real-time
 
+## Repository
+
+**GitHub**: https://github.com/philsmcc/groupdeedov2
+
+## Quick Deploy Commands
+
+```bash
+# Clone and deploy in one go
+git clone https://github.com/philsmcc/groupdeedov2.git
+cd groupdeedov2
+./deploy.sh docker
+```
+
 ## License
 
 MIT License
 
 ## Support
 
-For issues and questions, please create an issue in the GitHub repository.
+For issues and questions, please create an issue in the GitHub repository:
+https://github.com/philsmcc/groupdeedov2/issues
