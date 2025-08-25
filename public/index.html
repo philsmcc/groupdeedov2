@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GroupDeedo - Location Chat</title>
+    <link rel="stylesheet" href="/css/styles.css">
+    <link rel="manifest" href="/manifest.json">
+    <meta name="theme-color" content="#2563eb">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <link rel="apple-touch-icon" sizes="192x192" href="/assets/icon-192.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/assets/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/assets/favicon-16x16.png">
+</head>
+<body>
+    <div class="app-container">
+        <!-- Header -->
+        <header class="app-header">
+            <div class="header-content">
+                <h1 class="app-title">GroupDeedo</h1>
+                <button class="settings-btn" onclick="toggleSettings()">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <circle cx="12" cy="12" r="3"></circle>
+                        <path d="m12 1 0 6m0 6 0 6"></path>
+                        <path d="m21 12-6 0m-6 0-6 0"></path>
+                    </svg>
+                </button>
+            </div>
+            <div class="location-info">
+                <span id="locationStatus">Getting location...</span>
+            </div>
+        </header>
+
+        <!-- Settings Panel -->
+        <div class="settings-panel" id="settingsPanel">
+            <div class="settings-content">
+                <h2>Settings</h2>
+                <div class="setting-group">
+                    <label for="username">Display Name:</label>
+                    <input type="text" id="username" placeholder="Enter your name" maxlength="20">
+                </div>
+                <div class="setting-group">
+                    <label for="channel">Channel:</label>
+                    <input type="text" id="channel" placeholder="e.g., general, football" maxlength="30">
+                </div>
+                <div class="setting-group">
+                    <label for="radius">Radius: <span id="radiusValue">5</span> miles</label>
+                    <input type="range" id="radius" min="0.5" max="500" step="0.5" value="5">
+                </div>
+                <button class="save-btn" onclick="saveSettings()">Save Settings</button>
+                <button class="close-btn" onclick="toggleSettings()">Close</button>
+            </div>
+        </div>
+
+        <!-- Chat Messages -->
+        <div class="chat-container">
+            <div class="messages-container" id="messagesContainer">
+                <div class="welcome-message">
+                    <h3>Welcome to GroupDeedo!</h3>
+                    <p>You'll see messages from people within <span id="currentRadius">5</span> miles of your location.</p>
+                    <p>Current channel: <span id="currentChannel">general</span></p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Message Input -->
+        <div class="message-input-container">
+            <div class="input-group">
+                <input type="text" id="messageInput" placeholder="Type your message..." maxlength="280">
+                <button class="send-btn" onclick="sendMessage()" disabled>
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <line x1="22" y1="2" x2="11" y2="13"></line>
+                        <polygon points="22,2 15,22 11,13 2,9"></polygon>
+                    </svg>
+                </button>
+            </div>
+        </div>
+
+        <!-- Status Messages -->
+        <div class="status-message" id="statusMessage"></div>
+    </div>
+
+    <!-- Socket.io -->
+    <script src="/socket.io/socket.io.js"></script>
+    <!-- Main App Script -->
+    <script src="/js/app.js"></script>
+</body>
+</html>
