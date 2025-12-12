@@ -67,7 +67,7 @@ deploy_docker() {
     # Check if services are running
     if docker-compose ps | grep -q "Up"; then
         echo "✅ Docker deployment successful!"
-        echo "📱 Application is running at: http://localhost:3001"
+        echo "📱 Application is running at: http://localhost:3000"
         echo "📊 Check status: docker-compose ps"
         echo "📋 View logs: docker-compose logs -f"
     else
